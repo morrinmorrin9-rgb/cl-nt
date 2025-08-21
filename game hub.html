@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Runner War 3D</title>
+  <style>
+    html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#000; font-family:sans-serif; }
+    #renderCanvas { width:100%; height:100%; display:block; }
+    #hud {
+      position:absolute; top:10px; left:10px; color:#fff; font-size:20px; z-index:10;
+    }
+  </style>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas"></canvas>
+  <div id="hud">Score: <span id="score">0</span> | Coins: <span id="coins">0</span></div>
+
+  <script>
+    const canvas = document.getElementById("renderCanvas");
+    const engine = new BABYLON.Engine(canvas, true);
+
+    let scene, player, camera;
+    let lane = 0, lanes = [-3,0,3];
+    let jumping = false, velocityY = 0;
+    let sliding = false;
+    let speed = 0.5;
+    let score = 0, coins = 0;
+    let chunks = [], objects = [];
+
+    function createScene(){
+      scene = new BABYLON.Scene(engine);
+      scene.clearColor = new BABYLON.Color4(0.05,0.1,0.2,1);
+
+      // Camera
+      camera = new BABYLON.UniversalCamera("cam", new BABYLON.Vector3(0,5,-12), scene);
+      camera.setTarget(new BABYLON.Vector3(0,1,0));
+
+      // Light
+      new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0,1,0), scene);
+
+      // Player
+      player = BABYLON.MeshBuilder.CreateCapsule("player",{height:2, radius:0.5},scene);
+      player.position.y = 1;
+      player.material = new BABYLON.StandardMaterial("pm",scene);
+      player.material.diffuseColor = new BABYLON.Color3(0.2,0.6,1);
+
+      // Initial track chunks
+      for(let i=0;i<5;i++){ spawnChunk(i*30); }
+
+      // Controls
+      window.onkeydown = e=>{
+        if(e.key==="ArrowLeft" && lane>-1) lane--;
+        if(e.key==="ArrowRight" && lane<1) lane++;
+        if(e.key==="ArrowUp" && !jumping){ jumping=true; velocityY=0.4; }
+        if(e.key==="ArrowDown" && !sliding && !jumping){
+          sliding=true; player.scaling.y=0.5;
+          setTimeout(()=>{player.scaling.y=1;sliding=false;},600);
+        }
+      };
+
+      // Game Loop
+      scene.onBeforeRenderObservable.add(()=>{
+        // World moves backwards
+        chunks.forEach(c=>c.position.z -= speed);
+        objects.forEach(o=>o.position.z -= speed);
+
+        // Recycle chunks
+        if(chunks[0].position.z < -30){
+          let old = chunks.shift(); old.dispose();
+          spawnChunk(chunks[chunks.length-1].position.z+30);
+        }
+
+        // Lane movement
+        player.position.x += (lanes[lane+1]-player.position.x)*0.3;
+
+        // Jump
+        if(jumping){
+          player.position.y += velocityY;
+          velocityY -= 0.02;
+          if(player.position.y<=1){ player.position.y=1; jumping=false; }
+        }
+
+        // Collisions
+        for(let i=objects.length-1;i>=0;i--){
+          let o=objects[i];
+          if(o.position.z<-15){ o.dispose(); objects.splice(i,1); continue; }
+          if(o.name==="coin" && intersects(player,o)){
+            o.dispose(); objects.splice(i,1); coins++;
+            document.getElementById("coins").innerText=coins;
+          }
+          if(o.name==="obs" && intersects(player,o)){ alert("Game Over! Score:"+score); location.reload(); }
+        }
+
+        // Score
+        score++; document.getElementById("score").innerText=score;
+      });
+
+      return scene;
+    }
+
+    function spawnChunk(z){
+      const ground = BABYLON.MeshBuilder.CreateGround("g",{width:12,height:30},scene);
+      ground.position.z = z;
+      ground.material = new BABYLON.StandardMaterial("gm",scene);
+      ground.material.diffuseColor = new BABYLON.Color3(0.1,0.1,0.15);
+      chunks.push(ground);
+
+      // Random coins & obstacles
+      for(let i=0;i<3;i++){
+        if(Math.random()<0.5){
+          let coin = BABYLON.MeshBuilder.CreateSphere("coin",{diameter:0.6},scene);
+          coin.material = new BABYLON.StandardMaterial("cm",scene);
+          coin.material.emissiveColor = new BABYLON.Color3(1,0.9,0.1);
+          coin.position.set(lanes[i],1.2,z+Math.random()*25-12);
+          objects.push(coin);
+        }
+        if(Math.random()<0.4){
+          let obs = BABYLON.MeshBuilder.CreateBox("obs",{width:1,height:2,depth:1},scene);
+          obs.material = new BABYLON.StandardMaterial("om",scene);
+          obs.material.diffuseColor = new BABYLON.Color3(1,0.2,0.2);
+          obs.position.set(lanes[i],1,z+Math.random()*25-12);
+          objects.push(obs);
+        }
+      }
+    }
+
+    function intersects(a,b){
+      return Math.abs(a.position.x-b.position.x)<1 &&
+             Math.abs(a.position.y-b.position.y)<1.5 &&
+             Math.abs(a.position.z-b.position.z)<1.2;
+    }
+
+    scene = createScene();
+    engine.runRenderLoop(()=>scene.render());
+    window.addEventListener("resize",()=>engine.resize());
+  </script>
+</body>
+</html>
