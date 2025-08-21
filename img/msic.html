@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ikpekpe</title>
+</head>
+<body>
+    ><H1></H1>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinto Ikpekpe</title>
+    <!-- Include Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* A dark, clean background for a modern music vibe */
+        .dark-bg {
+            background-color: #0d0d0d;
+        }
+        .container-bg {
+            background-color: #1a1a1a;
+        }
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #555;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="dark-bg text-gray-100">
+
+    <!-- Header & Navigation -->
+    <header class="p-6 md:p-8 flex justify-between items-center sticky top-0 z-50 container-bg shadow-lg">
+        <h1 class="text-2xl md:text-3xl font-bold text-white">Clinto Ikpekpe</h1>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#about" class="text-gray-400 hover:text-white transition-colors duration-300">About</a>
+            <a href="#music" class="text-gray-400 hover:text-white transition-colors duration-300">Music</a>
+            <a href="#tour" class="text-gray-400 hover:text-white transition-colors duration-300">Tour</a>
+            <a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+            <!-- Mobile Menu Icon (Hamburger) -->
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6">
+        <button id="close-menu-button" class="absolute top-4 right-4 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="#about" class="text-white text-2xl font-bold hover:text-gray-400 transition-colors duration-300">About</a>
+        <a href="#music" class="text-white text-2xl font-bold hover:text-gray-400 transition-colors duration-300">Music</a>
+        <a href="#tour" class="text-white text-2xl font-bold hover:text-gray-400 transition-colors duration-300">Tour</a>
+        <a href="#contact" class="text-white text-2xl font-bold hover:text-gray-400 transition-colors duration-300">Contact</a>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative flex items-center justify-center text-center h-[70vh] md:h-[90vh] bg-cover bg-center" style="background-image: url('https://placehold.co/1200x800/262626/cccccc?text=Clinto+Ikpekpe');">
+            <div class="absolute inset-0 bg-black opacity-60"></div>
+            <div class="relative z-10 p-6 md:p-12">
+                <h2 class="text-5xl md:text-7xl font-extrabold text-white tracking-wide leading-tight drop-shadow-2xl">CLINTO IKPEKPE</h2>
+                <p class="text-xl md:text-2xl mt-4 text-gray-300">Genre | Lagos</p>
+                <a href="#music" class="mt-8 inline-block px-8 py-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-200 transform hover:scale-105 transition-all duration-300">Listen Now</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-24 max-w-4xl mx-auto px-6">
+            <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                <h3 class="text-3xl md:text-4xl font-bold mb-6 text-white text-center">About Clinto Ikpekpe</h3>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    Clinto Ikpekpe is an independent musician and songwriter based in Lagos. Weaving together elements of [Genre 1], [Genre 2], and [Genre 3], his music paints vivid emotional landscapes. After releasing his debut EP, "[EP Title]," in [Year], he's captivated audiences with his honest lyrics and evocative melodies. His sound has been described as a blend of raw energy and introspective depth, drawing inspiration from artists like [Artist 1] and [Artist 2]. Clinto is also open to discussions about brand partnerships and sponsorships.
+                </p>
+                <div class="mt-8 flex justify-center">
+                    <!-- Your profile photo has been added here. -->
+                    <img src="http://googleusercontent.com/file_content/1" alt="Clinto Ikpekpe Photo" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl">
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section id="music" class="py-16 md:py-24 bg-gray-900">
+            <div class="max-w-6xl mx-auto px-6">
+                <h3 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white">Music</h3>
+                
+                <!-- Main Music Player -->
+                <div class="flex flex-col md:flex-row items-center md:space-x-8 p-6 md:p-8 rounded-xl bg-gray-800 shadow-xl border border-gray-700">
+                    <div class="flex-shrink-0 mb-4 md:mb-0">
+                        <!-- We will update the album art based on the selected song -->
+                        <img id="player-album-art" src="https://placehold.co/150x150/555555/cccccc?text=Album+Art" alt="Album Art" class="w-48 h-48 rounded-lg shadow-lg">
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center text-center md:text-left">
+                        <!-- We will update the song title and artist based on the selected song -->
+                        <h4 id="player-song-title" class="text-2xl font-bold text-white">Select a song to play...</h4>
+                        <p id="player-artist" class="text-gray-400 mt-1">Clinto Ikpekpe</p>
+                        <div class="mt-4 flex items-center justify-center md:justify-start space-x-4">
+                            <!-- Play/Pause Button -->
+                            <button id="play-button" class="w-16 h-16 bg-white text-gray-900 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                <!-- Play SVG Icon -->
+                                <svg id="play-icon" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5.14v13.72l11-6.86-11-6.86z"/>
+                                </svg>
+                                <!-- Pause SVG Icon (initially hidden) -->
+                                <svg id="pause-icon" class="w-8 h-8 hidden" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                </svg>
+                            </button>
+                            <span id="player-status" class="text-gray-300 text-lg">Paused</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Song Playlist -->
+                <div class="mt-12">
+                    <h4 class="text-2xl font-bold mb-6 text-white text-center">My Music Playlist</h4>
+                    <div id="playlist" class="space-y-4">
+                        <!-- Each song item will have a data-src attribute for the song URL -->
+                        <div class="song-item cursor-pointer p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 hover:bg-gray-700 transition-colors duration-200" data-title="Feeling Good" data-artist="Clinto Ikpekpe" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" data-art="https://placehold.co/150x150/555555/cccccc?text=Album+Art+1">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://placehold.co/50x50/555555/cccccc?text=Art+1" alt="Album Art" class="w-12 h-12 rounded-full object-cover">
+                                <div class="flex-grow">
+                                    <p class="text-white font-semibold text-lg">Feeling Good</p>
+                                    <p class="text-gray-400 text-sm">Clinto Ikpekpe</p>
+                                </div>
+                                <button class="play-song-btn px-4 py-1 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors duration-300">Play</button>
+                            </div>
+                        </div>
+                        <div class="song-item cursor-pointer p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 hover:bg-gray-700 transition-colors duration-200" data-title="Summer Nights" data-artist="Clinto Ikpekpe" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" data-art="https://placehold.co/150x150/555555/cccccc?text=Album+Art+2">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://placehold.co/50x50/555555/cccccc?text=Art+2" alt="Album Art" class="w-12 h-12 rounded-full object-cover">
+                                <div class="flex-grow">
+                                    <p class="text-white font-semibold text-lg">Summer Nights</p>
+                                    <p class="text-gray-400 text-sm">Clinto Ikpekpe</p>
+                                </div>
+                                <button class="play-song-btn px-4 py-1 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors duration-300">Play</button>
+                            </div>
+                        </div>
+                        <div class="song-item cursor-pointer p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 hover:bg-gray-700 transition-colors duration-200" data-title="Electric Dreams" data-artist="Clinto Ikpekpe" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" data-art="https://placehold.co/150x150/555555/cccccc?text=Album+Art+3">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://placehold.co/50x50/555555/cccccc?text=Art+3" alt="Album Art" class="w-12 h-12 rounded-full object-cover">
+                                <div class="flex-grow">
+                                    <p class="text-white font-semibold text-lg">Electric Dreams</p>
+                                    <p class="text-gray-400 text-sm">Clinto Ikpekpe</p>
+                                </div>
+                                <button class="play-song-btn px-4 py-1 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors duration-300">Play</button>
+                            </div>
+                        </div>
+                        <div class="song-item cursor-pointer p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 hover:bg-gray-700 transition-colors duration-200" data-title="City Lights" data-artist="Clinto Ikpekpe" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" data-art="https://placehold.co/150x150/555555/cccccc?text=Album+Art+4">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://placehold.co/50x50/555555/cccccc?text=Art+4" alt="Album Art" class="w-12 h-12 rounded-full object-cover">
+                                <div class="flex-grow">
+                                    <p class="text-white font-semibold text-lg">City Lights</p>
+                                    <p class="text-gray-400 text-sm">Clinto Ikpekpe</p>
+                                </div>
+                                <button class="play-song-btn px-4 py-1 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors duration-300">Play</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Embedded Players (Optional) -->
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Placeholder for Bandcamp Embedded Player -->
+                    <div class="w-full bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-700">
+                        <h5 class="text-xl font-bold text-white mb-2">Listen on Bandcamp</h5>
+                        <div class="aspect-w-16 aspect-h-9 w-full">
+                            <!-- Placeholder for Bandcamp iframe. Replace with your actual embed code -->
+                            <div class="bg-gray-700 w-full h-48 flex items-center justify-center rounded text-gray-400 text-sm">
+                                Bandcamp Embed Placeholder
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Placeholder for Spotify Embedded Player -->
+                    <div class="w-full bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-700">
+                        <h5 class="text-xl font-bold text-white mb-2">Listen on Spotify</h5>
+                        <div class="aspect-w-16 aspect-h-9 w-full">
+                            <!-- Placeholder for Spotify iframe. Replace with your actual embed code -->
+                            <div class="bg-gray-700 w-full h-48 flex items-center justify-center rounded text-gray-400 text-sm">
+                                Spotify Embed Placeholder
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Dates Section -->
+        <section id="tour" class="py-16 md:py-24 max-w-4xl mx-auto px-6">
+            <div class="bg-gray-900 p-8 rounded-xl shadow-lg">
+                <h3 class="text-3xl md:text-4xl font-bold mb-8 text-center text-white">Upcoming Tour Dates</h3>
+                <div class="space-y-6">
+                    <!-- Tour Date Item -->
+                    <div class="flex flex-col md:flex-row items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-white-500">
+                        <div class="text-center md:text-left mb-2 md:mb-0">
+                            <p class="font-semibold text-lg text-white">November 20, 2025</p>
+                            <p class="text-gray-400">The Fillmore - Lagos, Nigeria</p>
+                        </div>
+                        <a href="#" class="px-6 py-2 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200 transition-colors duration-300">Tickets: $20</a>
+                    </div>
+                    <!-- Tour Date Item -->
+                    <div class="flex flex-col md:flex-row items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-white-500">
+                        <div class="text-center md:text-left mb-2 md:mb-0">
+                            <p class="font-semibold text-lg text-white">December 5, 2025</p>
+                            <p class="text-gray-400">The Bowery Ballroom - Lagos, Nigeria</p>
+                        </div>
+                        <a href="#" class="px-6 py-2 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200 transition-colors duration-300">Tickets: $20</a>
+                    </div>
+                    <!-- Tour Date Item -->
+                    <div class="flex flex-col md:flex-row items-center justify-between p-4 bg-gray-800 rounded-lg shadow-md border-l-4 border-white-500">
+                        <div class="text-center md:text-left mb-2 md:mb-0">
+                            <p class="font-semibold text-lg text-white">January 15, 2026</p>
+                            <p class="text-gray-400">Troubadour - Lagos, Nigeria</p>
+                        </div>
+                        <a href="#" class="px-6 py-2 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200 transition-colors duration-300">Tickets: $20</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media/Contact Section -->
+        <section id="contact" class="py-16 md:py-24 bg-gray-900">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <h3 class="text-3xl md:text-4xl font-bold mb-6 text-white">Stay Connected</h3>
+                <p class="text-gray-300 mb-8">Follow me on social media for the latest updates.</p>
+                <div class="flex justify-center space-x-6">
+                    <!-- Social Media Links -->
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.606 1.488 4.752 4.743.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.146 3.255-1.503 4.59-4.752 4.743-1.265.058-1.644.07-4.85.07-3.205 0-3.584-.012-4.849-.07-3.26-.146-4.606-1.487-4.752-4.743-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.146-3.255 1.502-4.59 4.752-4.743 1.265-.058 1.644-.07 4.849-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.204-6.236 2.079-6.434 6.435-.058 1.28-.071 1.688-.071 4.947 0 3.259.013 3.668.071 4.947.198 4.357 2.075 6.232 6.434 6.435 1.28.058 1.687.072 4.947.072 3.259 0 3.668-.014 4.946-.072 4.358-.198 6.235-2.075 6.433-6.435.058-1.279.071-1.688.071-4.947 0-3.259-.013-3.668-.071-4.947-.198-4.357-2.075-6.232-6.434-6.435-1.279-.058-1.687-.072-4.946-.072zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.442 1.442 0 100 2.884 1.442 1.442 0 000-2.884z"/>
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.675 3.325c-.752.333-1.547.558-2.38.658.865-.518 1.529-1.336 1.842-2.316-.81.481-1.706.83-2.659 1.015-2.736-2.924-7.237-1.121-7.237 4.195 0 2.45.986 4.674 2.592 6.236-2.05-.103-3.868-1.085-5.11-2.585-.68 1.157-.314 2.655.85 3.385 1.164.73 2.673.916 3.733.56-.25.01-.502.015-.75.015-1.42 0-2.75-.417-3.904-1.139v.04c0 3.195 2.27 5.86 5.253 6.47-.55.15-1.134.22-1.728.22-.423 0-.83-.04-1.229-.115.834 2.607 3.25 4.512 6.11 4.566-2.25 1.76-5.08 2.81-8.16 2.81-.53 0-1.05-.03-1.56-.09.34 2.22 2.54 3.84 5.09 3.84 6.11 0 9.434-5.065 9.434-9.434 0-.144-.004-.288-.009-.431.644-.467 1.205-1.056 1.644-1.72z"/>
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.584 7.185c.002-.119.002-.239.002-.359 0-.083-.001-.165-.002-.248-.001-.082-.002-.165-.003-.248a6.83 6.83 0 00-6.79-6.794c-.083-.001-.166-.002-.249-.002h-.5c-.083-.001-.166-.002-.249-.002a6.83 6.83 0 00-6.79 6.794c-.001.083-.002.165-.002.248-.001.082-.002.165-.002.248-.001.119-.002.239-.002.359v1.25a.8.8 0 00.8.8c.442 0 .8-.358.8-.8v-1.25c0-.064.004-.127.01-.19.01-.064.02-.128.03-.19.025-.17.067-.328.125-.472.059-.144.135-.275.226-.396.103-.138.225-.262.368-.37.145-.11.306-.197.482-.26.24-.085.5-.125.76-.125.26 0 .52.04.76.125.176.063.337.15.482.26.143.108.265.232.368.37.091.121.167.252.226.396.058.144.1.302.125.472.01.063.02.126.03.19.006.063.01.126.01.19v1.25a.8.8 0 00.8.8c.442 0 .8-.358.8-.8v-1.25c0-.064.004-.127.01-.19.01-.064.02-.128.03-.19.025-.17.067-.328.125-.472.059-.144.135-.275.226-.396.103-.138.225-.262.368-.37.145-.11.306-.197.482-.26.24-.085.5-.125.76-.125.26 0 .52.04.76.125.176.063.337.15.482.26.143.108.265.232.368.37.091.121.167.252.226.396.058.144.1.302.125.472.01.063.02.126.03.19.006.063.01.126.01.19v1.25a.8.8 0 00.8.8c.442 0 .8-.358.8-.8v-1.25z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="mt-8">
+                    <h4 class="text-2xl font-bold text-white mb-4">For Sponsorship & Partnerships</h4>
+                    <p class="text-gray-300">
+                        Interested in collaborating? Please email us at [your_email@example.com] for all sponsorship and brand partnership inquiries.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="container-bg py-8 text-center text-gray-400 text-sm shadow-inner">
+        &copy; 2025 Clinto Ikpekpe. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Smooth scroll functionality for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Get references to the audio player and UI elements
+        const audioPlayer = new Audio(); // Use `new Audio()` for dynamic loading
+        const playButton = document.getElementById('play-button');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const playerStatus = document.getElementById('player-status');
+        const playerSongTitle = document.getElementById('player-song-title');
+        const playerArtist = document.getElementById('player-artist');
+        const playerAlbumArt = document.getElementById('player-album-art');
+        const songItems = document.querySelectorAll('.song-item');
+
+        // Function to load and play a song from the playlist
+        const playSong = (songElement) => {
+            const title = songElement.dataset.title;
+            const artist = songElement.dataset.artist;
+            const src = songElement.dataset.src;
+            const art = songElement.dataset.art;
+
+            // Pause the current song if playing and check if it's the same song
+            if (!audioPlayer.paused && audioPlayer.src === src) {
+                audioPlayer.pause();
+                return;
+            }
+
+            // Remove 'active' class from all song items
+            songItems.forEach(item => item.classList.remove('border-white'));
+
+            // Set the new song source and update the UI
+            audioPlayer.src = src;
+            playerSongTitle.textContent = title;
+            playerArtist.textContent = artist;
+            playerAlbumArt.src = art;
+            
+            // Add 'active' class to the currently playing song
+            songElement.classList.add('border-white');
+            
+            // Play the new song
+            audioPlayer.play();
+        };
+
+        // Event listener for the main play/pause button
+        playButton.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
+        });
+
+        // Event listeners for each song item in the playlist
+        songItems.forEach(item => {
+            item.addEventListener('click', () => {
+                playSong(item);
+            });
+        });
+
+        // Event listeners to update the UI based on the audio state
+        audioPlayer.addEventListener('play', () => {
+            playIcon.classList.add('hidden');
+            pauseIcon.classList.remove('hidden');
+            playerStatus.textContent = 'Playing...';
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            playerStatus.textContent = 'Paused';
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            playerStatus.textContent = 'Finished';
+            
+            // Optional: Automatically play the next song
+            const currentSong = document.querySelector('.song-item.border-white');
+            if (currentSong && currentSong.nextElementSibling) {
+                playSong(currentSong.nextElementSibling);
+            }
+        });
+
+        // Handle case where audio fails to load
+        audioPlayer.addEventListener('error', () => {
+            playerStatus.textContent = 'Error loading song.';
+            console.error('Error loading audio file.');
+        });
+
+    </script><link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+		webhookUrl: https://cli1234.app.n8n.cloud/webhook/25f34859-9097-467b-9557-b0774390915d/chat'
+	});
+</script>
+
+</body>
+</html>
