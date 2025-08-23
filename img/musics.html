@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+><H1></H1>    
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clint Beatbox</title>
+    <!-- Use Tailwind CSS for a modern, responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #E0E0E0; /* Light text */
+        }
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fca5a5;
+            color: #121212;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Message Box for alerts -->
+    <div id="message-box" class="message-box"></div>
+
+    <!-- Header & Navigation -->
+    <header class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between bg-black/50 backdrop-blur-sm rounded-b-3xl">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2 mb-4 md:mb-0">
+            <svg class="h-8 w-8 text-lime-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 15.5V8.5a1 1 0 011.536-.843l6.035 3.5a1 1 0 010 1.686l-6.035 3.5A1 1 0 0111 17.5zM12 4a8 8 0 100 16 8 8 0 000-16zm-1 9a1 1 0 000-2V8.5a1 1 0 00-1.536-.843l-6.035 3.5a1 1 0 000 1.686l6.035 3.5A1 1 0 0011 12.5v-1z"/>
+            </svg>
+            <h1 class="text-3xl font-bold text-lime-400">Clint Beatbox</h1>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8">
+            <!-- Updated links to show/hide sections -->
+            <a href="#" class="nav-link" data-target="home-section">Home</a>
+            <a href="#" class="nav-link" data-target="about-section">About</a>
+            <a href="#" class="nav-link" data-target="tour-section">Tour</a>
+            <a href="#" class="nav-link" data-target="music-section">Music</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Area - All sections are here, hidden/shown with JS -->
+    <main class="container mx-auto p-6 md:p-10">
+
+        <!-- Home Section -->
+        <section id="home-section" class="section active">
+            <!-- Profile Picture & Greeting -->
+            <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+                <div class="flex items-center space-x-6 mb-6 md:mb-0">
+                    <!--
+                        PROFILE PICTURE CODE
+                        Replace the image URL below with the URL of your own profile picture.
+                        For example: src="https://mywebsite.com/my-profile-pic.jpg"
+                    -->
+                    <img src="https://placehold.co/128x128/34d399/121212" alt="Clint Beatbox Profile" class="h-32 w-32 rounded-full border-4 border-lime-400 shadow-xl">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2">Welcome, Beatboxers!</h2>
+                        <p class="text-lg text-gray-400">Discover the rhythm of my world.</p>
+                    </div>
+                </div>
+                <!-- Search Bar -->
+                <div class="flex items-center space-x-2 w-full md:w-auto">
+                    <input type="text" id="searchInput" placeholder="Search for a song..." class="w-full md:w-64 px-4 py-2 rounded-full bg-gray-800 text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-500">
+                    <button id="searchButton" class="bg-lime-500 hover:bg-lime-600 text-black font-semibold py-2 px-6 rounded-full transition-colors duration-300">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about-section" class="section">
+            <h3 class="text-3xl font-bold mb-6">About Me</h3>
+            <!-- Updated About section with a profile picture -->
+            <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 bg-gray-800 p-8 rounded-xl shadow-lg">
+                <!--
+                    PROFILE PICTURE CODE FOR ABOUT PAGE
+                    Replace the image URL below with the URL of your own profile picture.
+                    For example: src="https://mywebsite.com/my-profile-pic.jpg"
+                -->
+                <img src="https://placehold.co/128x128/34d399/121212" alt="Profile Picture" class="h-32 w-32 rounded-full border-4 border-lime-400 shadow-xl">
+                <!-- Bio Text -->
+                <div class="flex-1 text-center md:text-left">
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        Hi, I'm Clint, a passionate beatboxer dedicated to creating unique rhythms and sounds using just my voice. I started my journey by listening to some of my favorite artists and practicing every day. My goal is to share my love for beatboxing with the world and inspire others to find their own rhythm. I believe that music is a universal language, and I hope my beats can bring joy and energy to everyone who listens.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Section -->
+        <section id="tour-section" class="section">
+            <h3 class="text-3xl font-bold mb-6">Upcoming Tour</h3>
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg">
+                <p class="text-lg font-bold text-lime-400 mb-4">Tickets are just $20!</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto">
+                        <thead>
+                            <tr class="text-gray-400 border-b border-gray-600">
+                                <th class="py-2 pr-4">Date</th>
+                                <th class="py-2 px-4">City</th>
+                                <th class="py-2 pl-4">Venue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Tour Date 1 -->
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 pr-4">October 15, 2025</td>
+                                <td class="py-3 px-4">London, UK</td>
+                                <td class="py-3 pl-4">The Beatbox Arena</td>
+                            </tr>
+                            <!-- Tour Date 2 -->
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 pr-4">November 2, 2025</td>
+                                <td class="py-3 px-4">Tokyo, Japan</td>
+                                <td class="py-3 pl-4">Rhythm Hall</td>
+                            </tr>
+                            <!-- Tour Date 3 -->
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 pr-4">December 10, 2025</td>
+                                <td class="py-3 px-4">New York, USA</td>
+                                <td class="py-3 pl-4">The Sound Stage</td>
+                            </tr>
+                            <!-- Tour Date 4 -->
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 pr-4">January 20, 2026</td>
+                                <td class="py-3 px-4">Lagos, Nigeria</td>
+                                <td class="py-3 pl-4">Pulse Point Auditorium</td>
+                            </tr>
+                            <!-- Tour Date 5 -->
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 pr-4">February 14, 2026</td>
+                                <td class="py-3 px-4">Paris, France</td>
+                                <td class="py-3 pl-4">The Echo Room</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section id="music-section" class="section">
+            <h3 class="text-3xl font-bold mb-8">My Tracks</h3>
+            <div id="songsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 
+                    SONG CODE 1
+                    Update the 'src' in the audio tag with the URL of your song file.
+                -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-colors duration-300">
+                    <h4 class="text-xl font-semibold text-lime-400 mb-1">City Rhythm</h4>
+                    <p class="text-gray-400 mb-4">Clint Beatbox</p>
+                    <audio controls class="w-full mb-4">
+                        <source src="/downloads/Lil Nas X - HOLIDAY (Lyrics).mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="flex space-x-4">
+                        <button class="play-button bg-lime-500 hover:bg-lime-600 text-black font-bold py-2 px-6 rounded-full transition-colors duration-300">
+                            Play
+                        </button>
+                        <a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" download class="download-button bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300 text-center">
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SONG CODE 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-colors duration-300">
+                    <h4 class="text-xl font-semibold text-lime-400 mb-1">The Beatbox Odyssey</h4>
+                    <p class="text-gray-400 mb-4">Clint Beatbox</p>
+                    <audio controls class="w-full mb-4">
+                        <source src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="flex space-x-4">
+                        <button class="play-button bg-lime-500 hover:bg-lime-600 text-black font-bold py-2 px-6 rounded-full transition-colors duration-300">
+                            Play
+                        </button>
+                        <a href="/downloads/Lil Nas X -  Panini (Lyrics).mp3" download class="download-button bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300 text-center">
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SONG CODE 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-colors duration-300">
+                    <h4 class="text-xl font-semibold text-lime-400 mb-1">Rhythmic Resonance</h4>
+                    <p class="text-gray-400 mb-4">Clint Beatbox</p>
+                    <audio controls class="w-full mb-4">
+                        <source src="/downloads/Music-box-Remakelebu-mp3 (1).mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="flex space-x-4">
+                        <button class="play-button bg-lime-500 hover:bg-lime-600 text-black font-bold py-2 px-6 rounded-full transition-colors duration-300">
+                            Play
+                        </button>
+                        <a href="/downloads/Rema - YAYO (Lyric Visualizer).mp3" download class="download-button bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300 text-center">
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 
+                    SONG CODE 4
+                    This is your placeholder. Replace the 'src' attribute with your song URL.
+                -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-colors duration-300">
+                    <h4 class="text-xl font-semibold text-lime-400 mb-1">Your Song Title Here</h4>
+                    <p class="text-gray-400 mb-4">Clint Beatbox</p>
+                    <audio controls class="w-full mb-4">
+                        <source src="/downloads/Lil Tecca - Ransom (Lyrics).mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="flex space-x-4">
+                        <button class="play-button bg-lime-500 hover:bg-lime-600 text-black font-bold py-2 px-6 rounded-full transition-colors duration-300">
+                            Play
+                        </button>
+                        <a href="/downloads/Rema - YAYO (Lyric Visualizer).mp3" download class="download-button bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300 text-center">
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Function to show a temporary message
+        function showMessage(text) {
+            const messageBox = document.getElementById('message-box');
+            messageBox.textContent = text;
+            messageBox.classList.add('show');
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // Handle navigation clicks
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = link.dataset.target;
+                
+                // Hide all sections
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Show the target section
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Handle the search button click
+        document.getElementById('searchButton').addEventListener('click', () => {
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm) {
+                showMessage(`Searching for "${searchTerm}"...`);
+            } else {
+                showMessage("Please enter a song title.");
+            }
+        });
+
+        // Handle play buttons
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const songCard = event.target.closest('.bg-gray-800');
+                const audio = songCard.querySelector('audio');
+                
+                if (audio.paused) {
+                    audio.play();
+                    event.target.textContent = 'Pause';
+                } else {
+                    audio.pause();
+                    event.target.textContent = 'Play';
+                }
+            });
+        });
+
+        // Handle download buttons
+        document.querySelectorAll('.download-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const songTitle = button.closest('.bg-gray-800').querySelector('h4').textContent;
+                showMessage(`Downloading "${songTitle}"...`);
+            });
+        });
+    </script><link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+		webhookUrl: 'https://cli1234.app.n8n.cloud/webhook/25f34859-9097-467b-9557-b0774390915d/chat'
+	});
+</script>
+</body>
+</html>

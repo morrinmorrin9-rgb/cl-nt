@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+</head>
+<body>
+    ><H1></H1>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Collector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background-color: #2d3748;
+            border: 2px solid #4a5568;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        #player {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #48bb78;
+            border-radius: 9999px;
+            bottom: 20px;
+            left: calc(50% - 20px);
+            transition: left 0.2s ease-out;
+        }
+        .coin {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #ecc94b;
+            border-radius: 9999px;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            from { top: -25px; }
+        }
+        #score-display {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ecc94b;
+        }
+        #game-over-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #game-over-screen.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #restart-button {
+            padding: 10px 20px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            background-color: #48bb78;
+            color: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s;
+        }
+        #restart-button:hover {
+            background-color: #38a169;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 flex flex-col items-center justify-center min-h-screen">
+
+    <div id="game-container" class="relative w-full max-w-2xl h-96 bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+        <div id="player"></div>
+        <div id="score-display" class="font-bold text-yellow-400 p-4">Score: 0</div>
+        
+        <div id="game-over-screen" class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center transition-opacity duration-500 hidden">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Game Over!</h2>
+            <p id="final-score" class="text-2xl text-gray-200">Final Score: 0</p>
+            <p id="high-score" class="text-xl text-gray-300 mt-2">High Score: 0</p>
+            <button id="restart-button" class="mt-8 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const player = document.getElementById('player');
+        const scoreDisplay = document.getElementById('score-display');
+        const gameOverScreen = document.getElementById('game-over-screen');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const highScoreDisplay = document.getElementById('high-score');
+        const restartButton = document.getElementById('restart-button');
+
+        let score = 0;
+        let isGameOver = false;
+        let playerX = gameContainer.offsetWidth / 2 - player.offsetWidth / 2;
+        let coinSpawnInterval;
+        let gameLoopInterval;
+
+        function getHighScore() {
+            return localStorage.getItem('highScore') || 0;
+        }
+
+        function setHighScore(newScore) {
+            localStorage.setItem('highScore', newScore);
+        }
+
+        function spawnCoin() {
+            const coin = document.createElement('div');
+            coin.className = 'coin';
+            coin.style.left = Math.random() * (gameContainer.offsetWidth - 25) + 'px';
+            gameContainer.appendChild(coin);
+
+            const coinFallTime = 2000; // 2 seconds
+            coin.style.animationDuration = coinFallTime + 'ms';
+            
+            setTimeout(() => {
+                if (coin.parentNode) {
+                    coin.parentNode.removeChild(coin);
+                }
+            }, coinFallTime + 100);
+        }
+
+        function updateGame() {
+            if (isGameOver) return;
+
+            const playerRect = player.getBoundingClientRect();
+            const coins = document.querySelectorAll('.coin');
+            
+            coins.forEach(coin => {
+                const coinRect = coin.getBoundingClientRect();
+                if (
+                    playerRect.bottom >= coinRect.top &&
+                    playerRect.left < coinRect.right &&
+                    playerRect.right > coinRect.left
+                ) {
+                    score++;
+                    scoreDisplay.textContent = 'Score: ' + score;
+                    if (coin.parentNode) {
+                        coin.parentNode.removeChild(coin);
+                    }
+                }
+            });
+        }
+
+        function endGame() {
+            isGameOver = true;
+            clearInterval(coinSpawnInterval);
+            clearInterval(gameLoopInterval);
+
+            if (score > getHighScore()) {
+                setHighScore(score);
+            }
+
+            finalScoreDisplay.textContent = 'Final Score: ' + score;
+            highScoreDisplay.textContent = 'High Score: ' + getHighScore();
+            gameOverScreen.style.display = 'flex';
+        }
+        
+        function startGame() {
+            score = 0;
+            isGameOver = false;
+            scoreDisplay.textContent = 'Score: 0';
+            gameOverScreen.style.display = 'none';
+
+            // Remove all existing coins
+            const coins = document.querySelectorAll('.coin');
+            coins.forEach(coin => coin.remove());
+
+            coinSpawnInterval = setInterval(spawnCoin, 1000); // Spawn a coin every second
+            gameLoopInterval = setInterval(updateGame, 10); // Update game state every 10ms
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (isGameOver) return;
+            const moveSpeed = 15;
+            if (e.key === 'ArrowLeft' && playerX > 0) {
+                playerX -= moveSpeed;
+            } else if (e.key === 'ArrowRight' && playerX < gameContainer.offsetWidth - player.offsetWidth) {
+                playerX += moveSpeed;
+            }
+            player.style.left = playerX + 'px';
+        });
+
+        restartButton.addEventListener('click', startGame);
+
+        startGame();
+    </script><link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+		webhookUrl: 'https://cli1234.app.n8n.cloud/webhook/25f34859-9097-467b-9557-b0774390915d/chat'
+	});
+</script>
+</body>
+</html>
